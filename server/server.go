@@ -494,15 +494,15 @@ func openConnector(logger log.Logger, conn storage.Connector) (connector.Connect
 func (s *Server) OpenConnector(conn storage.Connector) (Connector, error) {
 	var c connector.Connector
 
-	if conn.Type == LocalConnector {
-		c = newPasswordDB(s.storage)
-	} else {
-		var err error
-		c, err = openConnector(s.logger, conn)
-		if err != nil {
-			return Connector{}, fmt.Errorf("failed to open connector: %v", err)
-		}
+	// if conn.Type == LocalConnector {
+		// c = newPasswordDB(s.storage)
+	// } else {
+	var err error
+	c, err = openConnector(s.logger, conn)
+	if err != nil {
+		return Connector{}, fmt.Errorf("failed to open connector: %v", err)
 	}
+	// }
 
 	connector := Connector{
 		ResourceVersion: conn.ResourceVersion,

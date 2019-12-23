@@ -184,14 +184,14 @@ func serve(cmd *cobra.Command, args []string) error {
 		storageConnectors[i] = conn
 	}
 
-	if c.EnablePasswordDB {
-		storageConnectors = append(storageConnectors, storage.Connector{
-			ID:   server.LocalConnector,
-			Name: "Email",
-			Type: server.LocalConnector,
-		})
-		logger.Infof("config connector: local passwords enabled")
-	}
+	// if c.EnablePasswordDB {
+		// storageConnectors = append(storageConnectors, storage.Connector{
+			// ID:   server.LocalConnector,
+			// Name: "Email",
+			// Type: server.LocalConnector,
+		// })
+		// logger.Infof("config connector: local passwords enabled")
+	// }
 
 	s = storage.WithStaticConnectors(s, storageConnectors)
 
